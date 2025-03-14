@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+@layer utilities {
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    .animate-pulse {
+      animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  /* CodeMirror styling */
+  .cm-editor {
+    height: 100% !important;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+  }
+  
+  .cm-scroller {
+    overflow: auto;
+    padding: 10px 0;
+  }
+  
+  /* Terminal styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Ensure full height */
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }

@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import Home from './pages/Home';
+import EditorPage from './pages/EditorPage';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
     <>
+      {/* Toast Notifications */}
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            success: {
+              style: {
+                background: '#1F2937',
+                color: '#F3F4F6',
+                border: '1px solid #374151',
+              },
+              iconTheme: {
+                primary: '#10B981',
+                secondary: '#F3F4F6',
+              },
+            },
+            error: {
+              style: {
+                background: '#1F2937',
+                color: '#F3F4F6',
+                border: '1px solid #374151',
+              },
+              iconTheme: {
+                primary: '#EF4444',
+                secondary: '#F3F4F6',
+              },
+            },
+            duration: 3000,
+          }}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+      {/* Router */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/editor/:roomId" element={<EditorPage />} />
+        </Routes>
+      </Router>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
